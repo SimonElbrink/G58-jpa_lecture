@@ -47,6 +47,15 @@ public class Student {
         this.email = email;
     }
 
+    @PrePersist
+    public void prePersist() {
+        System.out.println("Before persist:");
+        System.out.println(this);
+
+        this.status = true;
+        this.createDate = LocalDateTime.now();
+    }
+
     @Override
     public final boolean equals(Object o) {
         if (this == o) return true;
