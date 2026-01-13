@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 import se.lexicon.g58jpa_lecture.entity.Student;
 import se.lexicon.g58jpa_lecture.repo.StudentRepository;
 
+import java.util.Optional;
+
 @Component
 public class AppCommandLineRunner implements CommandLineRunner {
 
@@ -22,7 +24,11 @@ public class AppCommandLineRunner implements CommandLineRunner {
         studentRepository.save(new Student("John", "Doe", "john@test.com"));
 
 
-        studentRepository.findAll().forEach(System.out::println);
+        Optional<Student> email = studentRepository.findByEmail("john@test.com");
+
+        email.ifPresent(System.out::println);
+
+        studentRepository.searchFindByFirstName("John").forEach(System.out::println);
 
     }
 
