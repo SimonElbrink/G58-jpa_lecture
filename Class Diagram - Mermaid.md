@@ -10,6 +10,16 @@ classDiagram
         - String email
         - boolean status
         - LocalDateTime createDate
+        - Address address
     }
+    class Address {
+        - Long id
+        - String postalCode
+        - String street
+        - String city
+    }
+    
+    %% Relationships
+    Student --> Address : One-To-One
     
 ````

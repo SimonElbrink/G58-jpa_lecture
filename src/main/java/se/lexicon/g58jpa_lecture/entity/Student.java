@@ -1,8 +1,6 @@
 package se.lexicon.g58jpa_lecture.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.proxy.HibernateProxy;
@@ -37,6 +35,10 @@ public class Student {
 
     private boolean status;
     private LocalDateTime createDate;
+
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
 
 
     public Student(String firstName, String lastName, String email) {

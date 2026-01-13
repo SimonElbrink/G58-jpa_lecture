@@ -10,5 +10,14 @@ erDiagram
         TIMESTAMP create_date "DF = NOW()"
     }
 
+    ADDRESS {
+        BIGINT id PK "AI NN"
+        VARCHAR street "NN"
+        VARCHAR city "NN"
+        VARCHAR postal_code "NN"
+        VARCHAR country "NN"
+    }
 
+%% Relationships
+    STUDENT ||--|| ADDRESS: has_address
 ```
