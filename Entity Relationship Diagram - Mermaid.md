@@ -8,6 +8,7 @@ erDiagram
         VARCHAR email UK "NN"
         BOOLEAN status "DF = false"
         TIMESTAMP create_date "DF = NOW()"
+        BIGINT address_id FK, UK
     }
 
     ADDRESS {

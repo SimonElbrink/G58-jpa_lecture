@@ -37,4 +37,7 @@ public class Address {
     private String city;
     private String postalCode;
 
+    @OneToOne(mappedBy = "address")
+    private Student student;
+
 }

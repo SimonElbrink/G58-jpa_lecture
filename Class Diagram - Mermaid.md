@@ -17,9 +17,10 @@ classDiagram
         - String postalCode
         - String street
         - String city
+        - Student student
     }
     
     %% Relationships
-    Student --> Address : One-To-One
+    Student <--> Address : One-To-One
     
 ````

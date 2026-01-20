@@ -37,7 +37,7 @@ public class Student {
     private LocalDateTime createDate;
 
     @OneToOne
-    @JoinColumn(name = "address_id")
+    @JoinColumn(name = "address_id", unique = true)
     private Address address;
 
 
