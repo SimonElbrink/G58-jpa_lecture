@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public interface StudentRepository extends JpaRepository<Student, String> {
 
-    List<Student> findByFirstName(String firstName);
+    List<Student> findByfirstname(String firstName);
 
     Optional<Student> findByEmail(String email);
 
