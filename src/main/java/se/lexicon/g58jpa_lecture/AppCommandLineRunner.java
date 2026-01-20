@@ -3,6 +3,8 @@ package se.lexicon.g58jpa_lecture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import se.lexicon.g58jpa_lecture.entity.Address;
+import se.lexicon.g58jpa_lecture.entity.AddressRepository;
 import se.lexicon.g58jpa_lecture.entity.Student;
 import se.lexicon.g58jpa_lecture.repo.StudentRepository;
 
@@ -12,23 +14,25 @@ import java.util.Optional;
 public class AppCommandLineRunner implements CommandLineRunner {
 
     StudentRepository studentRepository;
+    AddressRepository addressRepository;
 
-    @Autowired
-    public AppCommandLineRunner(StudentRepository studentRepository) {
+    public AppCommandLineRunner(StudentRepository studentRepository, AddressRepository addressRepository) {
         this.studentRepository = studentRepository;
+        this.addressRepository = addressRepository;
     }
 
     @Override
     public void run(String... args) throws Exception {
 
-        studentRepository.save(new Student("John", "Doe", "john@test.com"));
+        // TODO: Transaction - one unit of work ?
 
+        Student john = studentRepository.save(new Student("John", "Doe", "john@test.com"));
 
-        Optional<Student> email = studentRepository.findByEmail("john@test.com");
+        Address stockholm = addressRepository.save(new Address("Nygatan 1", "Stockholm", "12345"));
 
-        email.ifPresent(System.out::println);
+        john.setAddress(stockholm);
 
-        studentRepository.searchFindByFirstName("John").forEach(System.out::println);
+        studentRepository.save(john);
 
     }
 

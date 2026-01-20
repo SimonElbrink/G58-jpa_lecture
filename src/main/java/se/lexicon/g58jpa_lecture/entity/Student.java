@@ -36,6 +36,7 @@ public class Student {
     private boolean status;
     private LocalDateTime createDate;
 
+    @Setter
     @OneToOne
     @JoinColumn(name = "address_id", unique = true)
     private Address address;

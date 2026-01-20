@@ -1,9 +1,13 @@
 package se.lexicon.g58jpa_lecture.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -39,5 +43,11 @@ public class Address {
 
     @OneToOne(mappedBy = "address")
     private Student student;
+
+    public Address(String street, String city, String postalCode) {
+        this.street = street;
+        this.city = city;
+        this.postalCode = postalCode;
+    }
 
 }
