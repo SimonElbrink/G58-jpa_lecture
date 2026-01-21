@@ -37,7 +37,7 @@ public class Student {
     private LocalDateTime createDate;
 
     @Setter
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH})
     @JoinColumn(name = "address_id", unique = true)
     private Address address;
 
