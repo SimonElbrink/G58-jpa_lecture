@@ -3,6 +3,8 @@
 classDiagram
     direction BT
     
+    %% Entities
+    
     class Student{
         - String id
         - String firstName
@@ -20,7 +22,20 @@ classDiagram
         - Student student
     }
     
+    class Course{
+        - Long id
+        - String courseName
+        - Instrucor mainTeacher
+    }
+    
+    class Instructor{
+        - Long id
+        - String name
+    }
+    
+    
     %% Relationships
     Student <--> Address : One-To-One
+    Course  --> Instructor : Many-To-One
     
 ````

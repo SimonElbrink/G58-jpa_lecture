@@ -19,6 +19,18 @@ erDiagram
         VARCHAR country "NN"
     }
 
+    INSTRUCTOR {
+        BIGINT id PK "AI NN"
+        VARCHAR name "NN"
+    }
+
+    COURSE {
+        BIGINT id PK "AI NN"
+        VARCHAR(80) course_name UK "NN"
+        BIGINT instructor_id FK "NN"
+    }
+
 %% Relationships
     STUDENT ||--|| ADDRESS: has_address
+    INSTRUCTOR ||--o{ COURSE: teaches
 ```
