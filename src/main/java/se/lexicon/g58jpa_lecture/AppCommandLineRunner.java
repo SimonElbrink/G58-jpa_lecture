@@ -1,14 +1,11 @@
 package se.lexicon.g58jpa_lecture;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import se.lexicon.g58jpa_lecture.entity.Address;
-import se.lexicon.g58jpa_lecture.entity.AddressRepository;
+import se.lexicon.g58jpa_lecture.repo.AddressRepository;
 import se.lexicon.g58jpa_lecture.entity.Student;
 import se.lexicon.g58jpa_lecture.repo.StudentRepository;
-
-import java.util.Optional;
 
 @Component
 public class AppCommandLineRunner implements CommandLineRunner {
