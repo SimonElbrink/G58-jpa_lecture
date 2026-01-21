@@ -58,12 +58,12 @@ public class Student {
 
     public void enrollInCourse(Course course) {
         courses.add(course);
-        course.getStudents().add(this); // Make in sync...
+//        course.getStudents().add(this); // Make in sync...
     }
 
     public void dropCourse(Course course) {
         courses.remove(course);
-        course.getStudents().remove(this); // Make in sync...
+//        course.getStudents().remove(this); // Make in sync...
     }
 
 

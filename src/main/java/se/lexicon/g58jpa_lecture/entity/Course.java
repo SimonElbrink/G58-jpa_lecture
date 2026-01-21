@@ -28,20 +28,20 @@ public class Course {
     @JoinColumn(name = "instructor_id")
     private Instructor mainTeacher;
 
-    @ManyToMany(mappedBy = "courses")
-    private Set<Student> students;
+//    @ManyToMany(mappedBy = "courses")
+//    private Set<Student> students;
 
     public Course(String courseName) {
         this.courseName = courseName;
     }
 
-    public void addStudent(Student student) {
-        students.add(student);
-        student.getCourses().add(this);
-    }
-
-    public void removeStudent(Student student) {
-        students.remove(student);
-        student.getCourses().remove(this);
-    }
+//    public void addStudent(Student student) {
+//        students.add(student);
+//        student.getCourses().add(this);
+//    }
+//
+//    public void removeStudent(Student student) {
+//        students.remove(student);
+//        student.getCourses().remove(this);
+//    }
 }
