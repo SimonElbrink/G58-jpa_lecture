@@ -4,7 +4,11 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.proxy.HibernateProxy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Set;
@@ -15,6 +19,7 @@ import java.util.Set;
 @ToString
 
 @Entity
+@EntityListeners(AuditingEntityListener.class) // https://www.codegenes.net/blog/spring-boot-jpa-createddate-lastmodifieddate-not-being-populated-when-saving-the-object/
 public class Student {
 
     @Id
@@ -35,7 +40,24 @@ public class Student {
     private String email;
 
     private boolean status;
+
+    // 📅 @CreatedDate - Automatically sets this field to the current date/time when the entity is first saved to the database
+    // Works with Spring Data JPA's auditing feature (requires @EnableJpaAuditing in main application class)
+    // This field is set ONCE when the entity is created and never changes after that
+    @CreatedDate
     private LocalDateTime createDate;
+
+    // 🔄 @LastModifiedDate - Automatically updates this field to the current date/time whenever the entity is modified
+    // Works with Spring Data JPA's auditing feature (requires @EnableJpaAuditing in main application class)
+    // This field is updated EVERY TIME you save changes to the entity
+    @LastModifiedDate
+    private LocalDateTime lastModifiedDate;
+
+    // 🚫 @Transient - Tells JPA to IGNORE this field and NOT save it to the database
+    // This field exists only in Java memory during runtime, not as a database column
+    // Useful for temporary calculations or derived values that don't need to be persisted
+    @Transient
+    private LocalDate date;
 
     @Setter
     @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH})
@@ -73,7 +95,7 @@ public class Student {
         System.out.println(this);
 
         this.status = true;
-        this.createDate = LocalDateTime.now();
+        date = createDate.toLocalDate();
     }
 
     @Override

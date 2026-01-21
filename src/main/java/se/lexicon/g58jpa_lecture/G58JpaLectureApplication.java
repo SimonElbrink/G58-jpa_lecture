@@ -2,8 +2,11 @@ package se.lexicon.g58jpa_lecture;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+
 
 @SpringBootApplication
+@EnableJpaAuditing // Enables Spring Data JPA auditing
 public class G58JpaLectureApplication {
 
     public static void main(String[] args) {
